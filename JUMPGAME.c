@@ -1,15 +1,19 @@
 #include<stdio.h>
 #pragma warning(disable:4996)
+
 void init_cache(int(*cache)[101]);
+
 int jump(int(*cache)[101], int(*map)[101], int x, int y, int n);
+
 int main()
 {
-    //freopen("input.txt", "r", stdin);
     int C, t;
     int n, i, j;
     int map[101][101];
     int cache[101][101];
+    
     scanf("%d", &C);
+    
     for (t = 1; t <= C; t++) {
 
         init_cache(cache);
@@ -43,13 +47,13 @@ void init_cache(int(*cache)[101])
 int jump(int(*cache)[101], int(*map)[101], int x, int y, int n)
 {
 
-    if (x < 0 || y < 0 || x >= n || y >= n)
+    if (x < 0 || y < 0 || x >= n || y >= n)     //x또는 y가 범위를 벗어났을때
         return 0;
 
     int move = map[x][y];
     int* ret = &(cache[x][y]);
 
-    if (x == n - 1 && y == n - 1)
+    if (x == n - 1 && y == n - 1)       //x와 y가 끝으로 올때
         return 1;
 
     if (*ret != -1)
